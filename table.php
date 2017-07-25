@@ -28,7 +28,7 @@ for ($i = 0; $i < count($tableData); $i++)
 	echo '<tr>';
 
 	for ($j = 1; $j < count($tableData[$i])-1; $j++)
-		echo '<td id="u'.$tableData[$i][0].'_'.($j-1).'" contenteditable>'.$tableData[$i][$j].'</td>';
+		echo '<td id="u'.$tableData[$i][0].'_'.($j-1).'" contenteditable>'.htmlspecialchars($tableData[$i][$j]).'</td>';
 	echo'<td><button type="button" id="d'.$tableData[$i][0].'" class="close" name="deleteBtn" aria-label="Close">
   <span aria-hidden="true">&times;</span>
 </button></td>';
