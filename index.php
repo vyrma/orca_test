@@ -68,8 +68,6 @@ require_once 'dbini.php';
 	
 	$handle = fopen($tmpFileName,'r');
 	$contents = array();
-	$pdo->exec("Insert into files VALUES()");
-	$archive_id = $pdo->lastInsertId();
 	$sql ='INSERT into file_contents (pirmas, antras, trecias, ketvirtas, file_id) VALUES ';
 	if($firstline = fgetcsv($handle,'0','|'))
 	{
@@ -78,6 +76,8 @@ require_once 'dbini.php';
 			Message('Stulpelių kiekis netinkamas patikrinkite .csv failą', 'danger', 'Klaida!');
 			return;
 		}
+		$pdo->exec("Insert into files VALUES()");
+		$archive_id = $pdo->lastInsertId();
 		$firstline = array_map('mb_strtolower',$firstline);
 		if($firstline[0] == 'pirmas' && $firstline[1] == 'antras' && ($firstline[2] == 'trečias' || $firstline[2] == 'trecias') && $firstline[3] =='ketvirtas')
 		{
