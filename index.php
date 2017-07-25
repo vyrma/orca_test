@@ -89,13 +89,11 @@ require_once 'dbini.php';
 			$sql .= '(?,?,?,?,?),';
 		}
 	}
-
-	$tableData = array();
+			
 	while($line = fgetcsv($handle,'0','|'))
 	{
 		if(count($line) == 4)
 		{
-			$tableData[] = $line;
 			$contents = array_merge($contents, $line);
 			array_push($contents,$archive_id);
 			$sql .= '(?,?,?,?,?),';
